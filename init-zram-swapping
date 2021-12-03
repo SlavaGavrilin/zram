@@ -21,9 +21,9 @@ for i in $(seq ${NRDEVICES}); do
 DEVNUMBER=$((i - 1)) 
  if [ -b /dev/zram${DEVNUMBER} ];then 
   if [ $(swapon -s|grep /dev/zram${DEVNUMBER}|wc -l) -gt 0 ];then  
-   swapoff /dev/zram${DEVNUMBER} 
+   swapoff /dev/zram${DEVNUMBER}
+   echo 1 > /sys/block/zram${DEVNUMBER}/reset 
   fi 
-  echo 1 > /sys/block/zram${DEVNUMBER}/reset 
  else 
   cat /sys/class/zram-control/hot_add 
  fi 
