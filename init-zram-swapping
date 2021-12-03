@@ -19,16 +19,16 @@ mem=$(((totalmem / 4 * 3 / ${NRDEVICES}) * 1024))
 # initialize the devices 
 for i in $(seq ${NRDEVICES}); do 
 DEVNUMBER=$((i - 1)) 
-if [ -b /dev/zram${DEVNUMBER} ];then 
+ if [ -b /dev/zram${DEVNUMBER} ];then 
   if [ $(swapon -s|grep /dev/zram${DEVNUMBER}|wc -l) -gt 0 ];then  
-    swapoff /dev/zram${DEVNUMBER} 
+   swapoff /dev/zram${DEVNUMBER} 
   fi 
-    echo 1 > /sys/block/zram${DEVNUMBER}/reset 
-else 
- cat /sys/class/zram-control/hot_add 
-fi 
-echo $mem > /sys/block/zram${DEVNUMBER}/disksize 
-mkswap /dev/zram${DEVNUMBER} 
-swapon -p 5 /dev/zram${DEVNUMBER} 
+  echo 1 > /sys/block/zram${DEVNUMBER}/reset 
+ else 
+  cat /sys/class/zram-control/hot_add 
+ fi 
+ echo $mem > /sys/block/zram${DEVNUMBER}/disksize 
+ mkswap /dev/zram${DEVNUMBER} 
+ swapon -p 5 /dev/zram${DEVNUMBER} 
 done 
 sysctl -w vm.swappiness=95 
