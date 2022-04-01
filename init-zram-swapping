@@ -27,6 +27,7 @@ DEVNUMBER=$((i - 1))
  else 
   cat /sys/class/zram-control/hot_add 
  fi 
+ echo lz4  > /sys/block/zram${DEVNUMBER}/comp_algorithm
  echo $mem > /sys/block/zram${DEVNUMBER}/disksize 
  mkswap /dev/zram${DEVNUMBER} 
  swapon -p 5 /dev/zram${DEVNUMBER} 
