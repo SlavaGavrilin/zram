@@ -1,5 +1,5 @@
 #!/bin/sh 
-#wget -O /usr/bin/init-zram-swapping https://raw.githubusercontent.com/SlavaGavrilin/zram/main/init-zram-swapping
+#apt install zram-config; wget -O /usr/bin/init-zram-swapping https://raw.githubusercontent.com/SlavaGavrilin/zram/main/init-zram-swapping; systemctl restart zram-config
 
 # load dependency modules 
 NRDEVICES=$(nproc) 
