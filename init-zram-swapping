@@ -1,5 +1,5 @@
 #!/bin/sh 
-#/usr/bin/init-zram-swapping 
+#wget -O /usr/bin/init-zram-swapping https://raw.githubusercontent.com/SlavaGavrilin/zram/main/init-zram-swapping
 
 # load dependency modules 
 NRDEVICES=$(nproc) 
