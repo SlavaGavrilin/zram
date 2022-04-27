@@ -33,5 +33,3 @@ DEVNUMBER=$((i - 1))
  swapon -p 5 /dev/zram${DEVNUMBER} 
 done 
 sysctl -w vm.swappiness=95 
-sysctl -w vm.overcommit_memory=2
-sysctl -w vm.overcommit_ratio=70
