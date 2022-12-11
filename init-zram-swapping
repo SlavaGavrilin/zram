@@ -1,5 +1,7 @@
 #!/bin/sh 
-#apt install zram-config; wget -O /usr/bin/init-zram-swapping https://raw.githubusercontent.com/SlavaGavrilin/zram/main/init-zram-swapping; systemctl restart zram-config
+#apt install zram-config
+#wget -O /usr/bin/init-zram-swapping https://raw.githubusercontent.com/SlavaGavrilin/zram/main/init-zram-swapping
+#systemctl restart zram-config
 
 # load dependency modules 
 NRDEVICES=$(nproc) 
@@ -32,4 +34,5 @@ DEVNUMBER=$((i - 1))
  mkswap /dev/zram${DEVNUMBER} 
  swapon -p 5 /dev/zram${DEVNUMBER} 
 done 
+#swap actively to use zram
 sysctl -w vm.swappiness=95 
