@@ -12,7 +12,7 @@ else
 fi 
 modprobe zram $MODPROBE_ARGS 
 
-# Calculate memory to use for zram (1/2 of ram) 
+# Calculate memory to use for zram (3/4 of ram) 
 totalmem=`free|head -n +2|tail -n1|awk {'print $2'}` 
 mem=$(((totalmem / 4 * 3 / ${NRDEVICES}) * 1024)) 
 
